@@ -26,26 +26,36 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getById(UUID uuid) {
-        return null;
+        return departmentRepository.getById(uuid);
     }
 
     @Override
     public List<Department> getAll() {
-        return null;
+        return departmentRepository.getAll();
     }
 
     @Override
     public void add(Department obj) {
-
+        departmentRepository.add(obj);
     }
 
     @Override
     public void removeById(UUID uuid) {
-
+        departmentRepository.removeById(uuid);
     }
 
     @Override
     public void update(Department obj) {
 
+    }
+
+    @Override
+    public void addEmployee(UUID uuid) {
+        departmentRepository.addEmployee(uuid);
+    }
+
+    @Override
+    public void removeEmployee(UUID uuid) {
+        departmentRepository.removeEmployee(uuid);
     }
 }

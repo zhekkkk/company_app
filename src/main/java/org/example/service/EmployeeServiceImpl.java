@@ -41,10 +41,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public void add(Employee obj) {
         employeeRepository.add(obj);
+        DepartmentServiceImpl.getInstance().addEmployee(obj.getDepartmentId());
     }
 
     @Override
     public void removeById(UUID uuid) {
+        DepartmentServiceImpl.getInstance().removeEmployee(employeeRepository.getById(uuid).getDepartmentId());
         employeeRepository.removeById(uuid);
     }
 

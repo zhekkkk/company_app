@@ -6,6 +6,8 @@ import java.util.UUID;
 
 public interface DepartmentService extends Service<Department, UUID> {
 
+    void addEmployee(UUID uuid);
 
+    void removeEmployee(UUID uuid);
 
 }

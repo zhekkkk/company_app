@@ -13,15 +13,21 @@ public class RemoveEmployee implements Command {
     @Override
     public void execute() {
         List<Employee> employees = EmployeeServiceImpl.getInstance().getAll();
-        for (int i = 0; i < employees.size(); i++)
+        if (employees.size() != 0)
         {
-            Employee emp = employees.get(i);
-            System.out.println((i + 1) + ". " + emp.getName() + " " + emp.getSurname() + " " + emp.getPatronymic() + ", " + emp.getAge() + " лет, отдел: " + DepartmentServiceImpl.getInstance().getById(emp.getDepartmentId()).getName());
+            for (int i = 0; i < employees.size(); i++) {
+                Employee emp = employees.get(i);
+                System.out.println((i + 1) + ". " + emp.getName() + " " + emp.getSurname() + " " + emp.getPatronymic() + ", age: " + emp.getAge() + ", department: " + DepartmentServiceImpl.getInstance().getById(emp.getDepartmentId()).getName());
+            }
+            System.out.println("choose an employee to remove: ");
+            Scanner sc = new Scanner(System.in);
+            int index = sc.nextInt();
+            EmployeeServiceImpl.getInstance().removeById(employees.get(index - 1).getId());
         }
-        System.out.println("Введите номер работника для удаления: ");
-        Scanner sc = new Scanner(System.in);
-        int index = sc.nextInt();
-        EmployeeServiceImpl.getInstance().removeById(employees.get(index - 1).getId());
+        else
+        {
+            System.out.println("there is no employees");
+        }
     }
 
     @Override

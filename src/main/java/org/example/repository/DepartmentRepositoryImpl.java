@@ -54,4 +54,28 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     public void update(Department obj) {
 
     }
+
+    @Override
+    public void addEmployee(UUID uuid) {
+        for(Department obj : objects)
+        {
+            if (obj.getId() == uuid)
+            {
+                int currNumOfEmployees = obj.getNumberOfEmployees();
+                obj.setNumberOfEmployees(currNumOfEmployees + 1);
+            }
+        }
+    }
+
+    @Override
+    public void removeEmployee(UUID uuid) {
+        for(Department obj : objects)
+        {
+            if (obj.getId() == uuid)
+            {
+                int currNumOfEmployees = obj.getNumberOfEmployees();
+                obj.setNumberOfEmployees(currNumOfEmployees - 1);
+            }
+        }
+    }
 }
