@@ -6,7 +6,7 @@ import org.example.service.DepartmentServiceImpl;
 import java.util.List;
 import java.util.Scanner;
 
-public class RemoveDepartment implements Command {
+public class ListOfDepartments implements Command {
 
     @Override
     public void execute() {
@@ -18,17 +18,6 @@ public class RemoveDepartment implements Command {
                 Department dep = departments.get(i);
                 System.out.println((i + 1) + ". " + dep.getName() + ", number of employees: " + dep.getNumberOfEmployees());
             }
-            System.out.println("choose a department to remove: ");
-            Scanner sc = new Scanner(System.in);
-            int index = sc.nextInt();
-            if (index < departments.size())
-            {
-                DepartmentServiceImpl.getInstance().removeById(departments.get(index - 1).getId());
-            }
-            else
-            {
-                System.out.println("wrong number of department");
-            }
         }
         else
         {
@@ -38,6 +27,6 @@ public class RemoveDepartment implements Command {
 
     @Override
     public String getCommandName() {
-        return "remove department";
+        return "list of departments";
     }
 }

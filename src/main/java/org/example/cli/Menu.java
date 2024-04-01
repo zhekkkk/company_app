@@ -11,11 +11,16 @@ public class Menu {
             new RemoveDepartment(),
             new UpdateDepartment(),
             new UpdateEmployee(),
+            new ListOfDepartments(),
+            new ListOfEmployees(),
+            new ShowTotalSalary(),
     };
 
     public static void run() {
         while (true)
         {
+            System.out.println("-----------------------------------");
+            System.out.println("choose an action: ");
             for (int i = 0; i < commands.length; i++)
             {
                 System.out.println(i + 1 + ". " + commands[i].getCommandName());

@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Department;
+import org.example.entity.Employee;
 import org.example.repository.DepartmentRepository;
 import org.example.repository.DepartmentRepositoryImpl;
 
@@ -41,6 +42,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void removeById(UUID uuid) {
+        List<Employee> employees = EmployeeServiceImpl.getInstance().getByDepartmentId(uuid);
+        for (Employee emp : employees)
+        {
+            EmployeeServiceImpl.getInstance().removeById(emp.getId());
+        }
         departmentRepository.removeById(uuid);
     }
 
@@ -61,7 +67,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public double getTotalSalary(UUID uuid) {
-        
+        List<Employee> employees = EmployeeServiceImpl.getInstance().getByDepartmentId(uuid);
+        double totalSalary = 0;
+        for (Employee emp : employees)
+        {
+            totalSalary += emp.getSalary();
+        }
+        return totalSalary;
     }
 
 }
