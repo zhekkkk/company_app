@@ -14,6 +14,7 @@ public class Employee implements Identifiable<UUID> {
     private double salary;
 
     public Employee(UUID department, String name, String surname, String patronymic, int age, double salary) {
+        this.id = UUID.randomUUID();
         this.departmentId = department;
         this.name = name;
         this.surname = surname;

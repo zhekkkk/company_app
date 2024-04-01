@@ -25,22 +25,29 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public Department getById(UUID uuid) {
+        for (Department obj : objects)
+        {
+            if (obj.getId() == uuid)
+            {
+                return obj;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Department> getAll() {
-        return null;
+        return objects;
     }
 
     @Override
     public void add(Department obj) {
-
+        objects.add(obj);
     }
 
     @Override
     public void removeById(UUID uuid) {
-
+        objects.removeIf(obj -> obj.getId() == uuid);
     }
 
     @Override

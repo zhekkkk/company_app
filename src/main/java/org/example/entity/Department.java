@@ -9,9 +9,10 @@ public class Department implements Identifiable<UUID> {
     private String name;
     private int numberOfEmployees;
 
-    public Department(String name, int numberOfEmployees) {
+    public Department(String name) {
+        this.id = UUID.randomUUID();
         this.name = name;
-        this.numberOfEmployees = numberOfEmployees;
+        this.numberOfEmployees = 0;
     }
 
     public String getName() {

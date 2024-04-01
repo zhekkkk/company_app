@@ -7,9 +7,11 @@ public class Menu {
     private static Command[] commands = new Command[] {
             new AddEmployee(),
             new RemoveEmployee(),
+            new AddDepartment(),
+            new RemoveDepartment(),
     };
 
-    private static void run() {
+    public static void run() {
         while (true)
         {
             for (int i = 0; i < commands.length; i++)

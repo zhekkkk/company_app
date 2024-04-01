@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import org.example.entity.Employee;
+import org.example.service.DepartmentServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee getById(UUID uuid) {
+        for (Employee obj : objects)
+        {
+            if (obj.getId() == uuid) {
+                return obj;
+            }
+        }
         return null;
     }
 
@@ -37,18 +44,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public void add(Employee obj) {
         objects.add(obj);
+        //DepartmentServiceImpl.getInstance().getById(obj.getDepartmentId()).setNumberOfEmployees();
     }
 
     @Override
     public void removeById(UUID uuid) {
-        for(Employee obj : objects)
-        {
-            if (obj.getId() == uuid)
-            {
-                objects.remove(obj);
-                break;
-            }
-        }
+        objects.removeIf(obj -> obj.getId() == uuid);
     }
 
     @Override

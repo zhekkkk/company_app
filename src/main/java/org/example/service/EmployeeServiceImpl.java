@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public List<Employee> getByDepartmentId(UUID departmentId) {
-        return null;
+        return employeeRepository.getByDepartmentId(departmentId);
     }
 
     @Override
