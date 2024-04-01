@@ -46,7 +46,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void update(Department obj) {
-
+        departmentRepository.update(obj);
     }
 
     @Override
@@ -58,4 +58,5 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void removeEmployee(UUID uuid) {
         departmentRepository.removeEmployee(uuid);
     }
+
 }

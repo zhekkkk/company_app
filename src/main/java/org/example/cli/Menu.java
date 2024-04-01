@@ -9,6 +9,7 @@ public class Menu {
             new RemoveEmployee(),
             new AddDepartment(),
             new RemoveDepartment(),
+            new UpdateDepartment()
     };
 
     public static void run() {
@@ -23,6 +24,7 @@ public class Menu {
             if (k == 0)
                 break;
             commands[k - 1].execute();
+            System.out.println("-----------------------------------");
         }
     }
 

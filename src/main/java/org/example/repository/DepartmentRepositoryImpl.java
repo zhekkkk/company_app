@@ -25,10 +25,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public Department getById(UUID uuid) {
-        for (Department obj : objects)
-        {
-            if (obj.getId() == uuid)
-            {
+        for (Department obj : objects) {
+            if (obj.getId() == uuid) {
                 return obj;
             }
         }
@@ -52,7 +50,13 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public void update(Department obj) {
-
+        for (Department dep : objects)
+        {
+            if (obj.getId() == dep.getId())
+            {
+                dep.setName(obj.getName());
+            }
+        }
     }
 
     @Override
