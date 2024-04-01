@@ -3,6 +3,7 @@ package org.example.cli;
 import org.example.entity.Department;
 import org.example.service.DepartmentServiceImpl;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,13 +19,13 @@ public class UpdateDepartment implements Command {
             }
             System.out.println("choose a department to update: ");
             Scanner sc = new Scanner(System.in);
-            if (sc.hasNextInt())
+            try
             {
                 int index = sc.nextInt();
                 Department dep = DepartmentServiceImpl.getInstance().getById(departments.get(index - 1).getId());
 
                 System.out.println("old name: " + dep.getName());
-                System.out.print("new name: ");
+                System.out.print("new name (press enter to pass): ");
                 String newName;
                 if (sc.hasNext())
                 {
@@ -39,7 +40,7 @@ public class UpdateDepartment implements Command {
                 newDep.setId(dep.getId());
                 DepartmentServiceImpl.getInstance().update(newDep);
             }
-            else
+            catch (InputMismatchException e)
             {
                 System.out.println("wrong input");
             }

@@ -9,7 +9,8 @@ public class Menu {
             new RemoveEmployee(),
             new AddDepartment(),
             new RemoveDepartment(),
-            new UpdateDepartment()
+            new UpdateDepartment(),
+            new UpdateEmployee(),
     };
 
     public static void run() {

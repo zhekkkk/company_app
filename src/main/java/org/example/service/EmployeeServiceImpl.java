@@ -52,6 +52,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public void update(Employee obj) {
-
+        List<Employee> objects = employeeRepository.getAll();
+        for (Employee emp : objects)
+        {
+            if (obj.getId() == emp.getId())
+            {
+                if (emp.getDepartmentId() != obj.getDepartmentId())
+                {
+                    DepartmentServiceImpl.getInstance().removeEmployee(emp.getDepartmentId());
+                    DepartmentServiceImpl.getInstance().addEmployee(obj.getDepartmentId());
+                }
+            }
+        }
+        employeeRepository.update(obj);
     }
 }

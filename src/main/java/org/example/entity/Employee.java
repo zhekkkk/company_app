@@ -27,7 +27,7 @@ public class Employee implements Identifiable<UUID> {
         return departmentId;
     }
 
-    public void setDepartment(UUID departmentId) {
+    public void setDepartmentId(UUID departmentId) {
         this.departmentId = departmentId;
     }
 

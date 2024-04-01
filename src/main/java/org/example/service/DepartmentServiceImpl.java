@@ -59,4 +59,9 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentRepository.removeEmployee(uuid);
     }
 
+    @Override
+    public double getTotalSalary(UUID uuid) {
+        
+    }
+
 }

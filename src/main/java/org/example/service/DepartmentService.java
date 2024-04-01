@@ -10,4 +10,6 @@ public interface DepartmentService extends Service<Department, UUID> {
 
     void removeEmployee(UUID uuid);
 
+    double getTotalSalary(UUID uuid);
+
 }

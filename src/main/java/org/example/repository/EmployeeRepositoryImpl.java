@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import org.example.entity.Department;
 import org.example.entity.Employee;
 import org.example.service.DepartmentServiceImpl;
 
@@ -54,11 +55,30 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public void update(Employee obj) {
-
+        for (Employee emp : objects)
+        {
+            if (obj.getId() == emp.getId())
+            {
+                emp.setName(obj.getName());
+                emp.setSurname(obj.getSurname());
+                emp.setPatronymic(obj.getPatronymic());
+                emp.setAge(obj.getAge());
+                emp.setSalary(obj.getSalary());
+                emp.setDepartmentId(obj.getDepartmentId());
+            }
+        }
     }
 
     @Override
     public List<Employee> getByDepartmentId(UUID departmentId) {
-        return null;
+        List<Employee> employees = new ArrayList<>();
+        for (Employee emp : objects)
+        {
+            if (emp.getDepartmentId() == departmentId)
+            {
+                employees.add(emp);
+            }
+        }
+        return employees;
     }
 }
