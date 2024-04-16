@@ -15,6 +15,12 @@ public class Department implements Identifiable<UUID> {
         this.numberOfEmployees = 0;
     }
 
+    public Department(UUID id, String name, int numberOfEmployees) {
+        this.id = id;
+        this.name = name;
+        this.numberOfEmployees = numberOfEmployees;
+    }
+
     public String getName() {
         return name;
     }

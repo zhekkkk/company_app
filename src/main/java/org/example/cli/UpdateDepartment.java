@@ -25,7 +25,7 @@ public class UpdateDepartment implements Command {
                 Department dep = DepartmentServiceImpl.getInstance().getById(departments.get(index - 1).getId());
 
                 System.out.println("old name: " + dep.getName());
-                System.out.print("new name (press enter to pass): ");
+                System.out.print("new name: ");
                 String newName;
                 if (sc.hasNext())
                 {

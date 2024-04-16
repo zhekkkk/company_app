@@ -21,7 +21,7 @@ public class RemoveDepartment implements Command {
             System.out.println("choose a department to remove: ");
             Scanner sc = new Scanner(System.in);
             int index = sc.nextInt();
-            if (index < departments.size())
+            if (index <= departments.size())
             {
                 DepartmentServiceImpl.getInstance().removeById(departments.get(index - 1).getId());
             }

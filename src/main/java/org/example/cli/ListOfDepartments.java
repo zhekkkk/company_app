@@ -11,7 +11,7 @@ public class ListOfDepartments implements Command {
     @Override
     public void execute() {
         List<Department> departments = DepartmentServiceImpl.getInstance().getAll();
-        if (departments.size() != 0)
+        if (!departments.isEmpty())
         {
             for (int i = 0; i < departments.size(); i++)
             {

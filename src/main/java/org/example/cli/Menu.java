@@ -14,6 +14,7 @@ public class Menu {
             new ListOfDepartments(),
             new ListOfEmployees(),
             new ShowTotalSalary(),
+            new ListOfDepartmentEmployees(),
     };
 
     public static void run() {

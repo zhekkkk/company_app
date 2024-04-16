@@ -11,7 +11,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        DepartmentServiceImpl.getInstance().add(new Department("accounting"));
+        /*DepartmentServiceImpl.getInstance().add(new Department("accounting"));
         DepartmentServiceImpl.getInstance().add(new Department("sales"));
         DepartmentServiceImpl.getInstance().add(new Department("human resources"));
         List<Department> deps = DepartmentServiceImpl.getInstance().getAll();
@@ -22,7 +22,7 @@ public class App {
         EmployeeServiceImpl.getInstance().add(new Employee(deps.get(1).getId(), "maslova", "arina", "andreevna", 22, 8700));
         EmployeeServiceImpl.getInstance().add(new Employee(deps.get(2).getId(), "demin", "mikhail", "maratovich", 44, 28974));
         EmployeeServiceImpl.getInstance().add(new Employee(deps.get(2).getId(), "larionov", "artem", "fyodorovich", 33, 56453));
-        Menu.run();
+        */Menu.run();
     }
 
 }

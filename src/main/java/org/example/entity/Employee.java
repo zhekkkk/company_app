@@ -23,6 +23,16 @@ public class Employee implements Identifiable<UUID> {
         this.salary = salary;
     }
 
+    public Employee(UUID id, UUID department, String name, String surname, String patronymic, int age, double salary) {
+        this.id = id;
+        this.departmentId = department;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.age = age;
+        this.salary = salary;
+    }
+
     public UUID getDepartmentId() {
         return departmentId;
     }

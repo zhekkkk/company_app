@@ -1,5 +1,7 @@
 package org.example.service;
 
+import org.example.dbservice.DepartmentDBService;
+import org.example.dbservice.DepartmentDBServiceImpl;
 import org.example.entity.Department;
 import org.example.entity.Employee;
 import org.example.repository.DepartmentRepository;
@@ -14,9 +16,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     private DepartmentRepository departmentRepository;
 
+    private DepartmentDBService departmentDBService;
+
     private DepartmentServiceImpl()
     {
         departmentRepository = DepartmentRepositoryImpl.getInstance();
+        departmentDBService = DepartmentDBServiceImpl.getInstance();
     }
 
     public static DepartmentServiceImpl getInstance() {
@@ -25,6 +30,48 @@ public class DepartmentServiceImpl implements DepartmentService {
         return instance;
     }
 
+    @Override
+    public void addEmployee(UUID uuid) {
+        departmentDBService.addEmployee(uuid);
+    }
+
+    @Override
+    public void removeEmployee(UUID uuid) {
+        departmentDBService.removeEmployee(uuid);
+    }
+
+    @Override
+    public double getTotalSalary(UUID uuid) {
+        return 0;
+    }
+
+    @Override
+    public Department getById(UUID uuid) {
+        return departmentDBService.getById(uuid);
+    }
+
+    @Override
+    public List<Department> getAll() {
+        return departmentDBService.getAll();
+    }
+
+    @Override
+    public void add(Department obj) {
+        departmentDBService.add(obj);
+    }
+
+    @Override
+    public void removeById(UUID uuid) {
+        departmentDBService.removeById(uuid);
+    }
+
+    @Override
+    public void update(Department obj) {
+        departmentDBService.update(obj);
+    }
+
+
+/*
     @Override
     public Department getById(UUID uuid) {
         return departmentRepository.getById(uuid);
@@ -74,6 +121,6 @@ public class DepartmentServiceImpl implements DepartmentService {
             totalSalary += emp.getSalary();
         }
         return totalSalary;
-    }
+    }*/
 
 }
