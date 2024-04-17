@@ -13,12 +13,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     private static EmployeeServiceImpl instance;
 
-    private EmployeeRepository employeeRepository;
-
     private EmployeeDBService employeeDBService;
 
     private EmployeeServiceImpl() {
-        employeeRepository = EmployeeRepositoryImpl.getInstance();
         employeeDBService = EmployeeDBServiceImpl.getInstance();
     }
 
@@ -59,51 +56,4 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void update(Employee obj) {
         employeeDBService.update(obj);
     }
-
-
-
-/*
-    @Override
-    public List<Employee> getByDepartmentId(UUID departmentId) {
-        return employeeRepository.getByDepartmentId(departmentId);
-    }
-
-    @Override
-    public Employee getById(UUID uuid) {
-        return employeeRepository.getById(uuid);
-    }
-
-    @Override
-    public List<Employee> getAll() {
-        return employeeRepository.getAll();
-    }
-
-    @Override
-    public void add(Employee obj) {
-        employeeRepository.add(obj);
-        DepartmentServiceImpl.getInstance().addEmployee(obj.getDepartmentId());
-    }
-
-    @Override
-    public void removeById(UUID uuid) {
-        DepartmentServiceImpl.getInstance().removeEmployee(employeeRepository.getById(uuid).getDepartmentId());
-        employeeRepository.removeById(uuid);
-    }
-
-    @Override
-    public void update(Employee obj) {
-        List<Employee> objects = employeeRepository.getAll();
-        for (Employee emp : objects)
-        {
-            if (obj.getId() == emp.getId())
-            {
-                if (emp.getDepartmentId() != obj.getDepartmentId())
-                {
-                    DepartmentServiceImpl.getInstance().removeEmployee(emp.getDepartmentId());
-                    DepartmentServiceImpl.getInstance().addEmployee(obj.getDepartmentId());
-                }
-            }
-        }
-        employeeRepository.update(obj);
-    }*/
 }

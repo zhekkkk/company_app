@@ -9,8 +9,6 @@ public class DBConnectionService {
     final String password = "stud";
 
     Connection connection;
-    Statement statement;
-    ResultSet resultSet;
 
     private static DBConnectionService instance;
 
@@ -39,17 +37,5 @@ public class DBConnectionService {
             return null;
         }
     }
-
-    /*public ResultSet executeQuery(String sql) {
-        try {
-            createStatement();
-            resultSet = statement.executeQuery(sql);
-            statement.close();
-            connection.commit();
-            return resultSet;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
 
 }

@@ -31,7 +31,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
     public void addEmployee(UUID uuid) {
         String sql = "UPDATE departments SET num_of_employees = num_of_employees + 1 WHERE id = '" + uuid + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -43,7 +43,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
     public void removeEmployee(UUID uuid) {
         String sql = "UPDATE departments SET num_of_employees = num_of_employees - 1 WHERE id = '" + uuid + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -52,10 +52,28 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
     }
 
     @Override
+    public double getTotalSalary(UUID uuid) {
+        String sql = "SELECT SUM(salary) FROM employees WHERE department_id = '" + uuid + "';";
+        double total = 0;
+        try {
+            statement = dbConnectionService.createStatement();
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                total = resultSet.getDouble("sum");
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return total;
+    }
+
+    @Override
     public void add(Department obj) {
         String sql = "INSERT INTO departments (id, name, num_of_employees) VALUES ('" + obj.getId() + "', '" + obj.getName() + "', " + obj.getNumberOfEmployees() + ");";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -68,7 +86,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
         String sql = "SELECT * FROM departments WHERE id = '" + uuid + "';";
         Department department = null;
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
                 UUID id = (UUID)resultSet.getObject("id");
@@ -88,7 +106,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
     public void removeById(UUID uuid) {
         String sql = "DELETE FROM departments WHERE id = '" + uuid + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -100,7 +118,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
     public void update(Department obj) {
         String sql = "UPDATE departments SET name = '" + obj.getName() + "' WHERE id = '" + obj.getId() + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -113,7 +131,7 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
         String sql = "SELECT * FROM departments;";
         List<Department> departments = new ArrayList<>();
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
                 UUID id = (UUID)resultSet.getObject("id");
@@ -127,10 +145,6 @@ public class DepartmentDBServiceImpl implements DepartmentDBService {
             System.out.println(e.getMessage());
         }
         return departments;
-    }
-
-    private void createStatement() {
-        statement = dbConnectionService.createStatement();
     }
 
 }

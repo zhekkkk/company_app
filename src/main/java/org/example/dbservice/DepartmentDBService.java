@@ -10,4 +10,6 @@ public interface DepartmentDBService extends DBService<Department, UUID> {
 
     void removeEmployee(UUID uuid);
 
+    double getTotalSalary(UUID uuid);
+
 }

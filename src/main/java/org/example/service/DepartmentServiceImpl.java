@@ -42,7 +42,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public double getTotalSalary(UUID uuid) {
-        return 0;
+        return departmentDBService.getTotalSalary(uuid);
     }
 
     @Override
@@ -62,6 +62,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void removeById(UUID uuid) {
+        List<Employee> employees = EmployeeServiceImpl.getInstance().getByDepartmentId(uuid);
+        for (Employee emp : employees)
+        {
+            EmployeeServiceImpl.getInstance().removeById(emp.getId());
+        }
         departmentDBService.removeById(uuid);
     }
 

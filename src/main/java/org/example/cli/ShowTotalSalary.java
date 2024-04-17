@@ -21,7 +21,7 @@ public class ShowTotalSalary implements Command {
             System.out.println("choose a department to show total salary: ");
             Scanner sc = new Scanner(System.in);
             int index = sc.nextInt();
-            if (index < departments.size())
+            if (index <= departments.size())
             {
                 double result = DepartmentServiceImpl.getInstance().getTotalSalary(departments.get(index - 1).getId());
                 System.out.println("total salary: " + result);

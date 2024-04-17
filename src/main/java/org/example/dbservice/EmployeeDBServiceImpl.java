@@ -33,7 +33,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
         String sql = "SELECT * FROM employees WHERE department_id = '" + uuid + "';";
         List<Employee> employees = new ArrayList<>();
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
                 UUID id = (UUID)resultSet.getObject("id");
@@ -59,7 +59,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
                 "'" + obj.getId() + "', '" + obj.getDepartmentId() + "', '" + obj.getName() + "', '" + obj.getSurname() +
                 "', '" + obj.getPatronymic() + "', " + obj.getAge() + ", " + obj.getSalary() + ");";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
         String sql = "SELECT * FROM employees WHERE id = '" + uuid + "';";
         Employee employee = null;
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
                 UUID id = (UUID)resultSet.getObject("id");
@@ -96,7 +96,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
     public void removeById(UUID uuid) {
         String sql = "DELETE FROM employees WHERE id = '" + uuid + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -114,7 +114,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
                 ", salary = " + obj.getSalary() +
                 " WHERE id = '" + obj.getId() + "';";
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {
@@ -127,7 +127,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
         String sql = "SELECT * FROM employees;";
         List<Employee> employees = new ArrayList<>();
         try {
-            createStatement();
+            statement = dbConnectionService.createStatement();
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
                 UUID id = (UUID)resultSet.getObject("id");
@@ -147,7 +147,7 @@ public class EmployeeDBServiceImpl implements EmployeeDBService{
         return employees;
     }
 
-    private void createStatement() {
+    /*private void createStatement() {
         statement = dbConnectionService.createStatement();
-    }
+    }*/
 }
